@@ -3,22 +3,22 @@ changes.
 
 ## kernel
 
-Just run `./build_kernel.sh`
+Run `./build_kernel.sh` to compile `Linux 5.4` with debug symbols. This takes
+quite a long time, but can be very helpful.
 
 ## initrd
 
 ### Buildroot
 
-I used rootfs generated from [buildroot](https://buildroot.org/).
-- Why? Because it creates a system with `uClibc`, so users don't have to send
-  enormous static binaries.
+I used rootfs generated from [buildroot](https://buildroot.org/) because it
+creates a system with `uClibc` so that players don't have to send enormous
+static binaries.
 
-Setup:
-- Go with default settings, but change it to x86_64
+#### Setup
+- Go with default settings, but change it to `x86_64`
 - After it's built, get rootfs from `output/images/rootfs.tar`.
 - You'll have to do `chmod ug-s bin/busybox` for some reason
 - Remember to edit `/etc/passwd` and `init`
-
 
 ### Cross-compilation
 
