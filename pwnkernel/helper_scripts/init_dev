@@ -1,0 +1,23 @@
+#!/bin/sh
+
+mount -t proc none /proc
+mount -t sysfs none /sys
+
+# Mount external $HOME to be accessible from within the emulator
+mount -t 9p -o trans=virtio,version=9p2000.L,nosuid hostshare /home/ctf
+
+insmod /kshellcode.ko
+sysctl -w kernel.perf_event_paranoid=1
+
+cat <<EOF
+
+
+Boot took $(cut -d' ' -f1 /proc/uptime) seconds
+
+
+EOF
+chmod 600 /flag
+chown 0.0 /flag
+
+# Start as root
+/bin/sh
