@@ -1,7 +1,7 @@
+# pwnkernel
+
 Based on [pwnkernel](https://github.com/pwncollege/pwnkernel) with a few minor
 changes.
-
----
 
 > The instructions below are for *creating* a pwnkernel challenge. For
 > instructions on *solving* a pwnkernel challenge see `helper_scripts`.
@@ -22,19 +22,21 @@ This takes quite a long time.
 
 ## Root filesystem
 
-### Buildroot
-
 I used rootfs generated from [buildroot](https://buildroot.org/) because it
 creates a system with `uClibc` so that players don't have to send enormous
 static binaries.
 
-#### Setup
+### Generating fs
+
+If you want to generate an `fs/` from scratch, follow these directions.
+Otherwise a working `fs/` is already provided.
+
 - Go with default settings, but change it to `x86_64`
 - After it's built, get rootfs from `output/images/rootfs.tar`.
 - You'll have to do `chmod ug-s bin/busybox` for some reason
 - Remember to edit `/etc/passwd` and `init`
 
-### Cross-compilation
+## Cross-compilation
 
 Goal: compile binaries that run on the emulator. Basically follow the
 directions in the
