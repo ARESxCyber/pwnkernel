@@ -6,9 +6,6 @@
 #include <linux/proc_fs.h>
 #include <linux/uaccess.h>
 
-#define PWN_GET _IO('p', 1)
-#define PWN_SET _IO('p', 2)
-
 MODULE_LICENSE("GPL");
 
 static int device_open(struct inode* inode, struct file* filp) {
