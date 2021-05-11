@@ -9,4 +9,5 @@
 /linux-*
 /initramfs.cpio.gz
 /bzImage
+/fs/*.ko
 .gdb_history

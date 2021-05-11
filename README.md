@@ -1,12 +1,26 @@
 Based on [pwnkernel](https://github.com/pwncollege/pwnkernel) with a few minor
 changes.
 
-## kernel
+---
 
-Run `./build_kernel.sh` to compile `Linux 5.4` with debug symbols. This takes
-quite a long time, but can be very helpful.
+> The instructions below are for *creating* a pwnkernel challenge. For
+> instructions on *solving* a pwnkernel challenge see `helper_scripts`.
 
-## initrd
+## Kernel
+
+Run `./build_kernel.sh` to compile the Linux kernel with debugging symbols.
+This takes quite a long time.
+
+### Building kernel modules
+
+- Create `src/foo.c`
+- Add an entry in `src/Makefile`
+- Run `make`
+- Copy `foo.ko` to `fs/`
+- Run `launch.sh`
+- Run `insmod foo.ko`. To automatically load `foo.ko`, add that line to `fs/init`
+
+## Root filesystem
 
 ### Buildroot
 
@@ -22,21 +36,9 @@ static binaries.
 
 ### Cross-compilation
 
-Goal: compile binaries that run on the emulator.
+Goal: compile binaries that run on the emulator. Basically follow the
+directions in the
+[Buildroot manual](https://buildroot.org/downloads/manual/manual.html#_using_the_generated_toolchain_outside_buildroot).
 
-#### Option 1
-
-Use the `SDK`.
-Run `make sdk` and get the tar. For convenience this should be distributed to
-players.
-
-#### Option 2
-
-Use the stuff in `output/host`:
-```
-export PATH=$HOME/Downloads/buildroot-2021.02.1/output/host/bin:$PATH
-x86_64-linux-gcc -o solve solve.c
-```
-
-Basically follow the directions in
-`8.14.1. Using the generated - toolchain outside Buildroot` of the buildroot manual.
+You can run `make sdk` to get a tar of `gcc` and other goodies. For
+convenience, this should be distributed to players.
