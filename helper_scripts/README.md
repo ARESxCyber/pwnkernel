@@ -58,5 +58,4 @@ compile your exploit externally.
 
 Luckily an SDK is provided in
 `x86_64-buildroot-linux-uclibc_sdk-buildroot.tar.gz`. Extract it and run
-`relocate-sdk.sh`. Then you can use use `cross_compile.sh` to compile your C
-files.
+`relocate-sdk.sh`. Then you can use `cross_compile.sh` to compile your C files.
