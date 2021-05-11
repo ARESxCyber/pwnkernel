@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
 export KERNEL_VERSION=5.4
-export BUSYBOX_VERSION=1.32.0
 
 # dependencies
 echo "[+] Checking / installing dependencies..."
