@@ -8,10 +8,10 @@ For most kernel challenges you'll be given these:
 ## Kernel Image
 
 Usually can just run `extract_vmlinux_wrapper.sh` to get the `vmlinux` ELF.
-Then you can do `gdb vmlinux` and do `target remote :1234` to attach to the
-QEMU debugger port.
+You'll use this `vmlinux` to debug in `gdb`.
 
-Unfortunately this method means you don't have any debugging symbols. Workarounds:
+Unfortunately simply extracting `vmlinux` means you don't have any debugging
+symbols. Workarounds:
 1. The dirty solution: `cat /proc/kallsyms | grep <symbol>`
 2. The clean solution: Build the kernel with debugging symbols. Takes a long
    time but can be worth it. See `/build_kernel.sh`
@@ -38,5 +38,25 @@ See `launch_dev.sh`. Basically it does two things:
 1. Compress the `fs` folder back into a `.cpio.gz`
 2. Boot the kernel and rootfs in QEMU
 
-Once launched, you can connect `gdb` as described in the [Kernel
-Image](#kernel-image) section.
+Once launched, you can connect `gdb` as described in the
+[Kernel Image](#kernel-image) section.
+
+Then you can do `gdb vmlinux` and do `target remote :1234` to attach to the
+QEMU debugger port
+
+**Note**: For some reason, the `ni` command is broken. You'll need to use `si`
+and `finish` to step out of function calls.
+
+Note that your external home directory will be mounted in `/home/ctf`, which is
+much easier than moving files in and out of the `fs` folder.
+
+## Cross-compilation
+
+Once you have the kernel running in QEMU, you'll want to start developing an
+exploit. Since there's no C compiler provided in the emulator, you'll need to
+compile it yourself.
+
+Luckily an SDK is provided in
+`x86_64-buildroot-linux-uclibc_sdk-buildroot.tar.gz`. Extract it and run
+`relocate-sdk.sh`. Then you can use use `cross_compile.sh` to compile your C
+files.
