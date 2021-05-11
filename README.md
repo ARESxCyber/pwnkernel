@@ -3,8 +3,9 @@
 Based on [pwnkernel](https://github.com/pwncollege/pwnkernel) with a few minor
 changes.
 
-> The instructions below are for *creating* a pwnkernel challenge. For
-> instructions on *solving* a pwnkernel challenge see `helper_scripts`.
+> The instructions below are for *creating* a kernel pwn challenge. For
+> instructions on *solving* a kernel pwn challenge, see
+> [helper_scripts/](helper_scripts/).
 
 ## Kernel
 
