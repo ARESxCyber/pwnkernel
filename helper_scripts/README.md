@@ -54,7 +54,7 @@ much easier than moving files in and out of the `fs` folder.
 
 Once you have the kernel running in QEMU, you'll want to start developing an
 exploit. Since there's no C compiler provided in the emulator, you'll need to
-compile it yourself.
+compile your exploit externally.
 
 Luckily an SDK is provided in
 `x86_64-buildroot-linux-uclibc_sdk-buildroot.tar.gz`. Extract it and run
