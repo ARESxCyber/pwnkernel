@@ -1,5 +1,5 @@
 # add more modules here!
-obj-m = kbof.o
+obj-m = kshellcode.o kbof.o
 CFLAGS_kbof.o := -fno-stack-protector
 KERNEL_VERSION=5.4
 
