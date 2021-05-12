@@ -61,7 +61,8 @@ compile your exploit externally.
 
 You can do `gcc -o solve -static solve.c`, and you should be able to run
 `./solve` in the emulator. However, static linking results in very large
-executables which take too long to send over a networked session.
+executables which take too long to send over a networked session (though you
+can use `musl` to shrink the exectable size).
 
 ### Dynamic linking
 

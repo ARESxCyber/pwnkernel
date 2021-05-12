@@ -38,13 +38,10 @@ Otherwise a working `fs/` is already provided.
 
 ## Cross-compilation
 
-You can do `gcc -o solve -static solve.c`, and you should be able to run
-`./solve` in the emulator. However, static linking results in very large
-executables which take too long to send over a networked session.
+See the `Cross-compilation` section in `helper_scripts/README.md`.
 
-Instead we can cross-compile dynamically-linked binaries that run on the
-emulator. Basically follow the directions in the
-[Buildroot manual](https://buildroot.org/downloads/manual/manual.html#_using_the_generated_toolchain_outside_buildroot).
+The [Buildroot manual](https://buildroot.org/downloads/manual/manual.html#_using_the_generated_toolchain_outside_buildroot)
+has some more information about this.
 
-You can run `make sdk` to get a tar of `gcc` and other goodies. For
+To build the SDK, run `make sdk` to get a tar of `gcc` and other goodies. For
 convenience, this should be distributed to players.
