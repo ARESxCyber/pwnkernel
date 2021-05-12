@@ -26,12 +26,13 @@ challenge files (e.g. vulnerable kernel driver) will be stored.
 
 Run `extract_initramfs.sh`, which gives you an `fs` folder.
 
-You can now add stuff to this `fs` folder, and they will be loaded when the
-kernel boots.
+You can now add stuff to this `fs` folder and they'll be loaded when the kernel
+boots.
 
-Usually you'll want to edit the `init` script so that:
+For local testing, you'll want to edit the `fs/init` script so that:
 - You start with a root shell
-- `$HOME` is mounted
+- `$HOME` is mounted in `/home/ctf`, which allows you to access external files
+  from within the emulator
 
 An example `/fs/init` is provided that does those two things.
 
@@ -49,9 +50,6 @@ QEMU debugger port
 
 **Note**: For some reason, the `ni` command is broken. You'll need to use `si`
 and `finish` to step out of function calls.
-
-Your external home directory will be mounted in `/home/ctf`, which allows you
-to access external files from within the emulator.
 
 ## Cross-compilation
 

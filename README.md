@@ -5,7 +5,7 @@ changes.
 
 > The instructions below are for *creating* a kernel pwn challenge. For
 > instructions on *solving* a kernel pwn challenge, see
-> [helper_scripts/](helper_scripts/).
+> [helper_scripts](helper_scripts/).
 
 ## Kernel
 
@@ -19,7 +19,8 @@ This takes quite a long time.
 - Run `make`
 - Copy `foo.ko` to `fs/`
 - Run `launch.sh`
-- Run `insmod foo.ko`. To automatically load `foo.ko`, add that line to `fs/init`
+- By default, `foo.ko` will automatically be loaded. You can also do it
+  manually with `insmod foo.ko`.
 
 ## Root filesystem
 
