@@ -2,7 +2,11 @@
 
 mount -t proc none /proc
 mount -t sysfs none /sys
-insmod /kshellcode.ko
+
+for f in $(ls *.ko); do
+	insmod $f
+done
+
 sysctl -w kernel.perf_event_paranoid=1
 
 cat <<EOF

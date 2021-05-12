@@ -29,12 +29,15 @@ Run `extract_initramfs.sh`, which gives you an `fs` folder.
 You can now add stuff to this `fs` folder, and they will be loaded when the
 kernel boots.
 
-Usually you'll want to edit the `init` script as well. An example `init_dev` is
-provided.
+Usually you'll want to edit the `init` script so that:
+- You start with a root shell
+- `$HOME` is mounted
+
+An example `/fs/init` is provided that does those two things.
 
 ## QEMU launch script
 
-See `launch_dev.sh`. Basically it does two things:
+See `/launch.sh`. Basically it does two things:
 1. Compress the `fs` folder back into a `.cpio.gz`
 2. Boot the kernel and rootfs in QEMU
 
@@ -47,8 +50,8 @@ QEMU debugger port
 **Note**: For some reason, the `ni` command is broken. You'll need to use `si`
 and `finish` to step out of function calls.
 
-Note that your external home directory will be mounted in `/home/ctf`, which is
-much easier than moving files in and out of the `fs` folder.
+Your external home directory will be mounted in `/home/ctf`, which allows you
+to access external files from within the emulator.
 
 ## Cross-compilation
 

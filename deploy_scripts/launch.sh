@@ -6,5 +6,5 @@ timeout --foreground 180 /usr/bin/qemu-system-x86_64 \
 	-initrd /home/ctf/app/initramfs.cpio.gz \
 	-nographic \
 	-monitor none \
-	-append "console=ttyS0 nokaslr oops=panic panic=1" \
+	-append "console=ttyS0 nokaslr panic=1" \
 	-no-reboot

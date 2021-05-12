@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Same as `launch.sh` except a few things to make exploit dev easier
+# Same as `deploy/launch.sh` except a few things to make exploit dev easier.
 
 # Compress `fs` folder into `.cpio.gz`
 pushd fs
