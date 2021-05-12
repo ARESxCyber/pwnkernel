@@ -56,6 +56,17 @@ Once you have the kernel running in QEMU, you'll want to start developing an
 exploit. Since there's no C compiler provided in the emulator, you'll need to
 compile your exploit externally.
 
-Luckily an SDK is provided in
-`x86_64-buildroot-linux-uclibc_sdk-buildroot.tar.gz`. Extract it and run
-`relocate-sdk.sh`. Then you can use `cross_compile.sh` to compile your C files.
+### Static linking
+
+You can do `gcc -o solve -static solve.c`, and you should be able to run
+`./solve` in the emulator. However, static linking results in very large
+executables which take too long to send over a networked session.
+
+### Dynamic linking
+
+To keep the binary size small, we can cross-compile dynamically-linked binaries
+that run on the emulator.
+
+An SDK is provided in `x86_64-buildroot-linux-uclibc_sdk-buildroot.tar.gz`.
+Extract it and run `relocate-sdk.sh`. Then you can use `cross_compile.sh` to
+compile your C files.

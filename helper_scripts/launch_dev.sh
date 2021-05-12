@@ -8,7 +8,7 @@ find . -print0 | cpio --null -ov --format=newc | gzip -9 > ../initramfs_dev.cpio
 popd
 
 # Mount external $HOME to be accessible from within the emulator
-timeout --foreground 180 /usr/bin/qemu-system-x86_64 \
+/usr/bin/qemu-system-x86_64 \
 	-m 64M \
 	-kernel $PWD/bzImage \
 	-initrd $PWD/initramfs_dev.cpio.gz \
@@ -16,6 +16,6 @@ timeout --foreground 180 /usr/bin/qemu-system-x86_64 \
 	-device virtio-9p-pci,id=fs0,fsdev=fsdev0,mount_tag=hostshare \
 	-nographic \
 	-monitor none \
-	-append "console=ttyS0 nokaslr oops=panic panic=1" \
+	-append "console=ttyS0 nokaslr" \
 	-no-reboot \
 	-s  # Expose debugger port

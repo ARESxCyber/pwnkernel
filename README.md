@@ -23,11 +23,9 @@ This takes quite a long time.
 
 ## Root filesystem
 
-I used rootfs generated from [buildroot](https://buildroot.org/) because it
+I used rootfs generated from [Buildroot](https://buildroot.org/) because it
 creates a system with `uClibc` so that players don't have to send enormous
 static binaries.
-
-### Generating fs
 
 If you want to generate an `fs/` from scratch, follow these directions.
 Otherwise a working `fs/` is already provided.
@@ -39,8 +37,12 @@ Otherwise a working `fs/` is already provided.
 
 ## Cross-compilation
 
-Goal: compile binaries that run on the emulator. Basically follow the
-directions in the
+You can do `gcc -o solve -static solve.c`, and you should be able to run
+`./solve` in the emulator. However, static linking results in very large
+executables which take too long to send over a networked session.
+
+Instead we can cross-compile dynamically-linked binaries that run on the
+emulator. Basically follow the directions in the
 [Buildroot manual](https://buildroot.org/downloads/manual/manual.html#_using_the_generated_toolchain_outside_buildroot).
 
 You can run `make sdk` to get a tar of `gcc` and other goodies. For
