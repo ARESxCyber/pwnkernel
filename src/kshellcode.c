@@ -1,7 +1,3 @@
-#include <linux/cred.h>
-#include <linux/fs.h>
-#include <linux/ioctl.h>
-#include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/proc_fs.h>
 #include <linux/uaccess.h>
@@ -18,21 +14,13 @@ static int device_release(struct inode* inode, struct file* filp) {
     return 0;
 }
 
-static ssize_t device_read(
-    struct file* filp,
-    char* buffer,
-    size_t length,
-    loff_t* offset
-) {
+static ssize_t
+device_read(struct file* filp, char* buffer, size_t length, loff_t* offset) {
     return -EINVAL;
 }
 
-static ssize_t device_write(
-    struct file* filp,
-    const char* buf,
-    size_t len,
-    loff_t* off)
-{
+static ssize_t
+device_write(struct file* filp, const char* buf, size_t len, loff_t* off) {
     return -EINVAL;
 }
 
@@ -42,8 +30,7 @@ typedef void func(void);
 static long device_ioctl(
     struct file* filp,
     unsigned int ioctl_num,
-    unsigned long ioctl_param
-) {
+    unsigned long ioctl_param) {
     printk(KERN_ALERT "Got ioctl argument %#x!\n", ioctl_num);
     if (ioctl_num < 128) {
         copy_from_user(shellcode, (void*)ioctl_param, ioctl_num);
@@ -58,8 +45,7 @@ static struct file_operations fops = {
     .write = device_write,
     .unlocked_ioctl = device_ioctl,
     .open = device_open,
-    .release = device_release
-};
+    .release = device_release};
 
 struct proc_dir_entry* proc_entry = NULL;
 

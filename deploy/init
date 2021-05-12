@@ -18,4 +18,4 @@ Boot took $(cut -d' ' -f1 /proc/uptime) seconds
 EOF
 chmod 600 /flag
 chown 0.0 /flag
-su -l ctf
+exec su -l ctf

@@ -16,7 +16,8 @@ This takes quite a long time.
 
 - Create `src/foo.c`
 - Add an entry in `src/Makefile`
-- Run `make`
+- Run `make` (run `bear make` sintead to generate `compile_commands.json` that
+  editors can use for linting)
 - Copy `foo.ko` to `fs/`
 - Run `launch.sh`
 - By default, `foo.ko` will automatically be loaded. You can also do it
